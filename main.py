@@ -3,7 +3,7 @@ from os import system, name
 
 boardSizeX = 8
 boardSizeY = 8
-playerPosX = 7
+playerPosX = 0
 playerPosY = 0
 numberOfLandmines = 0
 atTopOfBoard = False
@@ -27,12 +27,13 @@ def clear():
     else: 
         _ = system('clear') 
 
+
 def make_board():
   board = []
-  for ypos in range(boardSizeY):
+  for Y in range(boardSizeY):
     row = []
-    for xpos in range(boardSizeX):
-      if playerPosX == xpos and playerPosY == ypos:
+    for X in range(boardSizeX):
+      if playerPosX == X and playerPosY == Y:
         row.append("@")
       else:
         row.append(".")
@@ -41,24 +42,27 @@ def make_board():
   return board
 
 def print_board(board):
-  for y in range(boardSizeY):
-    for x in range(boardSizeX):
-      row = board[y]
-      cell = row[x]
+  for Y in reversed(range(boardSizeY)): #why is it reversed? :)
+    for X in range(boardSizeX):
+      row = board[Y]
+      cell = row[X]
       print(cell, end="")
     print("\r")
 
-clear()
-
 while atTopOfBoard == False or landminesHit <= 2:
+  clear()
   board = make_board()
   print_board(board)
   keyPressed = getch()
-  print(f"you pressed {keyPressed}")
   if keyPressed == "d":
-    playerPosY = playerPosY + 1
+    playerPosY += - 1
+    if playerPosY < 0:
+      playerPosY = 0
   elif keyPressed == "u":
-    playerPosY = playerPosY + 1
+    playerPosY += 1
+    if playerPosY >= boardSizeY - 1:
+      playerPosY = boardSizeY - 1
+      atTopOfBoard = True
 
 
 if atTopOfBoard and landminesHit <= 2:
