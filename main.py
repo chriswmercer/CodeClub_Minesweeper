@@ -63,6 +63,14 @@ while atTopOfBoard == False or landminesHit <= 2:
     if playerPosY >= boardSizeY - 1:
       playerPosY = boardSizeY - 1
       atTopOfBoard = True
+  elif keyPressed == "l":
+    playerPosX -= 1
+    if playerPosX <=0:
+      playerPosX = 0
+  elif keyPressed == "r":
+    playerPosX += 1
+    if playerPosX >= boardSizeX - 1:
+      playerPosX = boardSizeX - 1
 
 
 if atTopOfBoard and landminesHit <= 2:
