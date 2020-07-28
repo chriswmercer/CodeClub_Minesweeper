@@ -77,3 +77,5 @@ if atTopOfBoard and landminesHit <= 2:
   print("Well done you win")
 else:
   print("You Lose! Better Luck Next Time!!")
+
+CRAPCRAPCRAPCRAPCRAPCRAPCRAPCRAPCRAPCRAP
