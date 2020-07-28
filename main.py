@@ -1,5 +1,5 @@
 import sys, termios, tty, os, time
-from os import system, name 
+from os import system, name
 
 boardSizeX = 8
 boardSizeY = 8
@@ -15,17 +15,17 @@ def getch():
     try:
         tty.setraw(sys.stdin.fileno())
         ch = sys.stdin.read(1)
- 
+
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
 
-def clear(): 
-    if name == 'nt': 
-        _ = system('cls') 
-    else: 
-        _ = system('clear') 
+def clear():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 
 
 def make_board():
@@ -76,4 +76,4 @@ while atTopOfBoard == False or landminesHit <= 2:
 if atTopOfBoard and landminesHit <= 2:
   print("Well done you win")
 else:
-  print("Bad luck you lost, loser")
+  print("You Lose! Better Luck Next Time!!")
